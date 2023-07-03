@@ -13,6 +13,7 @@ const routes = require('routes-file')
 const app = express()
 const helpers = hbshelpers()
 const PORT = process.env.PORT || 8080
+require('config-file/mongoose')
 
 // template engine: express-handlebars
 app.engine('hbs', exphbs({

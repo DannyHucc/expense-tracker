@@ -1,0 +1,28 @@
+{
+  "categories": [
+    {
+      "name": "Income",
+      "icon": "fa-solid fa-money-bill-1-wave"
+    },
+    {
+      "name": "Housing",
+      "icon": "fa-solid fa-house"
+    },
+    {
+      "name": "Transportation",
+      "icon": "fa-solid fa-van-shuttle"
+    },
+    {
+      "name": "Entertainment",
+      "icon": "fa-solid fa-face-grin-beam"
+    },
+    {
+      "name": "Food",
+      "icon": "fa-solid fa-utensils"
+    },
+    {
+      "name": "Other",
+      "icon": "fa-solid fa-pen"
+    }
+  ]
+}
