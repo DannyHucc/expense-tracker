@@ -1,0 +1,38 @@
+{{!-- views/users/register.hbs --}}
+<div class="card mx-auto border-0" style="width: 28rem; margin-top:5%">
+    <h1 class="mx-auto">Register</h1>
+
+    <div class="card-body">
+        <form action="/login" method="POST">
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="name" name="name" id="name" class="form-control" aria-describedby="name"
+                    placeholder="Enter User Name">
+            </div>
+
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" name="email" id="email" class="form-control" aria-describedby="email"
+                    placeholder="Enter Email">
+            </div>
+
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" name="password" id="password" class="form-control" aria-describedby="password"
+                    placeholder="Enter Password">
+            </div>
+
+            <div class="mb-1">
+                <label for="confirmPassword" class="form-label">Confirm Password</label>
+                <input type="confirmPassword" name="confirmPassword" id="confirmPassword" class="form-control"
+                    aria-describedby="confirmPassword" placeholder="Enter confirmPassword">
+            </div>
+
+            <button type="submit" class="btn btn-primary d-block mx-auto mt-3" style="width: 26rem;">Register</button>
+        </form>
+
+        <p class="lead mt-4">
+            Have An Account? <a href="/users/login">Login</a>
+        </p>
+    </div>
+</div>
