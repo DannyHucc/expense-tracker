@@ -1,19 +1,19 @@
 {{!-- views/users/login.hbs --}}
 <div class="card mx-auto border-0" style="width: 28rem; margin-top:5%">
     <h1 class="mx-auto">Login</h1>
-
+    {{> message}}
     <div class="card-body">
-        <form action="/login" method="POST">
+        <form action="/users/login" method="POST">
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
-                <input type="email" name="email" id="email" class="form-control" aria-describedby="email"
+                <input type="email" name="email" id="email" class="form-control" aria-describedby="email" value="user1@example.com"
                     placeholder="Enter Email">
             </div>
 
             <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
                 <input type="password" name="password" id="password" class="form-control" aria-describedby="password"
-                    placeholder="Enter Password">
+                   value="12345678" placeholder="Enter Password">
             </div>
 
             <button type="submit" class="btn btn-primary d-block mx-auto mt-3" style="width: 26rem;">Login</button>
