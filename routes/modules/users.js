@@ -28,4 +28,15 @@ router.get('/register', async (req, res, next) => {
     }
 })
 
+// logout
+router.get('/logout', async (req, res, next) => {
+    try {
+        req.logout()
+        req.flash("success_msg", "Logout success.")
+        return res.redirect('/users/login')
+    } catch (error) {
+        return next(error)
+    }
+})
+
 module.exports = router
