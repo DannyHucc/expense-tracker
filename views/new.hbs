@@ -1,0 +1,60 @@
+{{!-- views/new.hbs --}}
+<div class="d-flex flex-column align-items-center">
+    <h3>Create a new expense</h3>
+
+    <div class="my-3 w-50">
+        <form class="info-form" action="/expense/new" method="POST">
+            <div class="mb-3 d-flex">
+                <label for="numberType" class="input-group-text">
+                    <span class="text-danger">*</span> Type</label>
+                <select name="type" id="numberType" class="form-select" required>
+                    <option value="income" {{#is type 'income' }} selected {{/is}}>Income</option>
+                    <option value="expense" {{#is type 'expense' }} selected {{/is}}>expense</option>
+                </select>
+                <div class="invalid-feedback">Please Select Type</div>
+            </div>
+
+            <div class="mb-3 d-flex">
+                <label for="name" class="input-group-text">
+                    <span class="text-danger">*</span> Name</label>
+                <input type="text" id="name" name="name" class="form-control" value="{{ name }}" required>
+                <div class="invalid-feedback">Please Input Name</div>
+            </div>
+
+            <div class="mb-3 d-flex">
+                <label for="date" class="input-group-text">
+                    <span class="text-danger">*</span> Date</label>
+                <input type="date" name="date" class="form-control" id="date" min="1900-01-01" max="2100-12-31"
+                    value="{{ today }}" required />
+                <div class="invalid-feedback">Please Select Date</div>
+            </div>
+
+            <div class="mb-3 d-flex">
+                <label for="categoryId" class="input-group-text">
+                    <span class="text-danger">*</span> Category</label>
+                <select id="categoryId" name="categoryId" class="form-select" required>
+                    <option value="">Choose...</option>
+                    {{#each categories}}
+                    <option value="{{ this._id }}" {{#is this._id ../categoryId}} selected {{/is}}> {{ this.name }}
+                    </option>
+                    {{/each}}
+                </select>
+                <div class="invalid-feedback">Please Select Category</div>
+            </div>
+
+            <div class="mb-3 d-flex">
+                <label for="amount" class="input-group-text">
+                    <span class="text-danger">*</span> Amount</label>
+                <input type="number" id="amount" name="amount" class="form-control" value="{{ amount }}" min="1"
+                    placeholder="666666" required>
+                <div class="invalid-feedback">Please Input Amount</div>
+            </div>
+
+            <div class="btn-control d-flex-just-content-evenly">
+                <a href="/" class="btn btn-dark btn-back mx-auto mt-3" style="width: 20rem;">Back</a>
+                <button type="submit" class="btn btn-success btn-save mx-auto mt-3"
+                    style="width: 20rem;">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>

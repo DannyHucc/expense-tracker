@@ -1,3 +1,5 @@
+'use strict'
+
 module.exports = {
     authenticator: async (req, res, next) => {
         try {
