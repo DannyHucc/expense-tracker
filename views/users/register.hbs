@@ -1,31 +1,37 @@
 {{!-- views/users/register.hbs --}}
 <div class="card mx-auto border-0" style="width: 28rem; margin-top:5%">
     <h1 class="mx-auto">Register</h1>
-
+    {{> message}}
     <div class="card-body">
-        <form action="/login" method="POST">
+        <form action="/users/register" method="POST">
             <div class="mb-3">
                 <label for="name" class="form-label">Name</label>
                 <input type="name" name="name" id="name" class="form-control" aria-describedby="name"
-                    placeholder="Enter User Name">
+                    placeholder="Enter User Name" value="{{ name }}">
             </div>
 
             <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
+                <label for="email" class="form-label">
+                    <span class="text-danger">*</span> Email</label>
                 <input type="email" name="email" id="email" class="form-control" aria-describedby="email"
-                    placeholder="Enter Email">
+                    placeholder="Enter Email" value="{{ email }}" required>
             </div>
 
             <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
+                <label for="password" class="form-label">
+                    <span class="text-danger">*</span> Password</label>
                 <input type="password" name="password" id="password" class="form-control" aria-describedby="password"
-                    placeholder="Enter Password">
+                    placeholder="Enter Password" value="{{ password }}" required>
+                <small class="form-text text-muted" id="passwordHelpBlock">Your password must be 8-20 characters long,
+                    contain letters and numbers and symbols.</small>
             </div>
 
             <div class="mb-1">
-                <label for="confirmPassword" class="form-label">Confirm Password</label>
-                <input type="confirmPassword" name="confirmPassword" id="confirmPassword" class="form-control"
-                    aria-describedby="confirmPassword" placeholder="Enter confirmPassword">
+                <label for="confirmPassword" class="form-label">
+                    <span class="text-danger">*</span> Confirm Password</label>
+                <input type="password" name="confirmPassword" id="confirmPassword" class="form-control"
+                    aria-describedby="confirmPassword" placeholder="Enter confirmPassword" value="{{ confirmPassword }}"
+                    required>
             </div>
 
             <button type="submit" class="btn btn-primary d-block mx-auto mt-3" style="width: 26rem;">Register</button>
