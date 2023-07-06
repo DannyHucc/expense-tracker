@@ -1,1 +1,56 @@
-<h2>index</h2>
+{{!-- views/index.hbs --}}
+<div class="mb-3">
+    {{!-- balance data --}}
+    <div class="card mx-auto border-0" style="width: 45%; margin-top:5%;">
+        <div class="card-body d-flex-column align-items-center border shadow-sm rounded-3 pb-0">
+            <h2 class="card-title text-center fw-bold">Your Balance</h2>
+            <h3 class="card-text text-center fw-border text-{{ totalAmountColor }}">
+                ${{ totalAmount }}
+            </h3>
+
+            <div class="row font-monospace border-top py-2">
+                <div class="col border-end text-center">
+                    <h4>Income</h4>
+                    <h5 class="text-info">${{ income }}</h5>
+                </div>
+
+                <div class="col text-center">
+                    <h4>Expense</h4>
+                    <h5 class="text-danger">${{ expense }}</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{!-- expense data --}}
+<div class="mb-3 d-flex justify-content-center">
+    <div class="card" style="width:75%;">
+        <div class="card-body overflow-auto">
+            <table class="table table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">Type</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Amount</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {{#each records}}
+                    <tr>
+                        <td>{{ this.type }}</td>
+                        <td class="record-icon"><i class="{{ this.icon }}"></i></td>
+                        <td>{{ this.name }}</td>
+                        <td>{{ this.date }}</td>
+                        <td class="record-amount">{{ this.amount }}</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>
