@@ -90,4 +90,17 @@ router.put('/edit/:id', async (req, res, next) => {
     }
 })
 
+// delete
+router.delete('/delete/:id', async (req, res, next) => {
+    try {
+        const _id = req.params.id
+        const userId = req.user._id
+        await Record.findOneAndDelete({ _id, userId })
+        req.flash('success_msg', 'Delete success!!!')
+        return res.redirect('/')
+    } catch (error) {
+        return next(error)
+    }
+})
+
 module.exports = router

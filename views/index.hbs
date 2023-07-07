@@ -4,18 +4,18 @@
     {{!-- balance data --}}
     <div class="card mx-auto border-0" style="width: 45%; margin-top:5%;">
         <div class="card-body d-flex-column align-items-center border shadow-sm rounded-3 pb-0">
-            <h2 class="card-title text-center fw-bold">Your Balance</h2>
-            <h3 class="card-text text-center fw-border text-{{ totalAmountColor }}">
+            <h2 class="card-title text-center align-middle fw-bold">Your Balance</h2>
+            <h3 class="card-text text-center align-middle fw-border text-{{ totalAmountColor }}">
                 ${{ totalAmount }}
             </h3>
 
             <div class="row font-monospace border-top py-2">
-                <div class="col border-end text-center">
+                <div class="col border-end text-center align-middle">
                     <h4>Income</h4>
                     <h5 class="text-info">${{ income }}</h5>
                 </div>
 
-                <div class="col text-center">
+                <div class="col text-center align-middle">
                     <h4>Expense</h4>
                     <h5 class="text-danger">${{ expense }}</h5>
                 </div>
@@ -31,27 +31,36 @@
             <table class="table table-hover">
                 <thead class="table-dark">
                     <tr>
-                        <th scope="col">Type</th>
-                        <th scope="col">Category</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Date</th>
-                        <th scope="col">Amount</th>
-                        <th scope="col">Edit</th>
+                        <th class="text-center align-middle" scope="col">Type</th>
+                        <th class="text-center align-middle" scope="col">Category</th>
+                        <th class="text-center align-middle" scope="col">Name</th>
+                        <th class="text-center align-middle" scope="col">Date</th>
+                        <th class="text-center align-middle" scope="col">Amount</th>
+                        <th class="text-center align-middle" scope="col">Edit</th>
+                        <th class="text-center align-middle" scope="col">Delete</th>
                     </tr>
                 </thead>
 
-                <tbody>
+                <tbody class="record-tables">
                     {{#each records}}
                     <tr>
-                        <td>{{ this.type }}</td>
-                        <td class="record-icon"><i class="{{ this.icon }}"></i></td>
-                        <td>{{ this.name }}</td>
-                        <td>{{ this.date }}</td>
-                        <td class="record-amount">{{ this.amount }}</td>
-                        <td>
+                        <td class="text-center align-middle">{{ this.type }}</td>
+                        <td class="text-center align-middle record-icon"><i class="{{ this.icon }}"></i></td>
+                        <td class="text-center align-middle">{{ this.name }}</td>
+                        <td class="text-center align-middle">{{ this.date }}</td>
+                        <td class="text-center align-middle record-amount">{{ this.amount }}</td>
+                        <td class="text-center align-middle">
                             <a href="/expense/edit/{{ this._id }}" class="edit-icon">
                                 <i class="fa-solid fa-pen-to-square text-success"></i>
                             </a>
+                        </td>
+                        <td class="text-center align-middle">
+                            <form class="form-delete form-{{ this._id }}"
+                                action="/expense/delete/{{ this._id }}?_method=DELETE" method="POST">
+                                <button type="submit" class="btn btn-delete" data-id="{{ this._id }}">
+                                    <i class="fa-solid fa-trash-can text-danger" data-id="{{ this._id }}"></i>
+                                </button>
+                            </form>
                         </td>
                     </tr>
                     {{/each}}
