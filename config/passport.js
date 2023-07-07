@@ -73,6 +73,16 @@ module.exports = app => {
         thirdPartyOAuth
     ))
 
+    // Google Strategy
+    passport.use(new GoogleStrategy(
+        {
+            clientID: process.env.GOOGLE_ID,
+            clientSecret: process.env.GOOGLE_SECRET,
+            callbackURL: process.env.GOOGLE_CALLBACK
+        },
+        thirdPartyOAuth
+    ))
+
     // serialize and deserialize
     passport.serializeUser(async (user, done) => {
         try {
