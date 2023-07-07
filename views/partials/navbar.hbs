@@ -7,7 +7,7 @@
             Expense Tracker</a>
         {{#if isAuthenticated}}
         <div class="d-flex">
-            {{#if new}} {{else}}
+            {{#if home}}
             <a class="btn btn-outline-primary me-1" href="/expense/new" role="button">ADD RECORD</a>
             {{/if}}
             <a class="btn btn-outline-primary" href="/users/logout" role="button">LOGOUT</a>

@@ -18,7 +18,7 @@ function sweetAlert(event) {
         dangerMode: true
     }).then(check => {
         if (check) {
-            window.location.href = "../"
+            window.location.href = "../../"
         }
     })
 }

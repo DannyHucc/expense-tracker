@@ -37,7 +37,8 @@ router.get('/', async (req, res, next) => {
             income,
             expense,
             totalAmount,
-            totalAmountColor
+            totalAmountColor,
+            home: 'home'
         })
     } catch (error) {
         return next(error)

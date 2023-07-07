@@ -14,11 +14,10 @@ router.get('/new', async (req, res, next) => {
         return res.render('new', {
             today,
             categories,
-            new: 'new',
             javascript: ['new.js']
         })
     } catch (error) {
-        next(error)
+        return next(error)
     }
 })
 
@@ -41,12 +40,53 @@ router.post('/new', async (req, res, next) => {
             categoryId,
             amount,
             userId,
-            new: 'new',
             javascript: ['new.js']
         })
+        req.flash('success_msg', 'Create success!!!')
         return res.redirect('/')
     } catch (error) {
-        next(error)
+        return next(error)
+    }
+})
+
+// edit get
+router.get('/edit/:id', async (req, res, next) => {
+    try {
+        const _id = req.params.id
+        const userId = req.user._id
+
+        const record = await Record.findOne({ _id, userId }).lean()
+        record.date = new Date(record.date).toISOString().slice(0, 10)
+
+        const categories = await Category.find().lean()
+        const category = categories.find((category) => {
+            if (category._id.toString() === record.categoryId.toString()) {
+                return category
+            }
+        })
+
+        return res.render('edit', {
+            _id,
+            record,
+            categories,
+            category: category.name,
+            javascript: ['edit.js']
+        })
+    } catch (error) {
+        return next(error)
+    }
+})
+
+// edit put
+router.put('/edit/:id', async (req, res, next) => {
+    try {
+        const _id = req.params.id
+        const userId = req.user._id
+        await Record.findOneAndUpdate({ _id, userId }, req.body)
+        req.flash('success_msg', 'Modify success!!!')
+        return res.redirect('/')
+    } catch (error) {
+        return next(error)
     }
 })
 
