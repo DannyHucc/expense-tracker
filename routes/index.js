@@ -9,10 +9,12 @@ const { authenticator } = require('middleware-file/auth')
 const home = require('./modules/home')
 const user = require('./modules/users')
 const expense = require('./modules/expense')
+const auth = require('./modules/auth')
 
 // middleware: routes
-router.use('/expense', authenticator, expense)
+router.use('/auth', auth)
 router.use('/users', user)
+router.use('/expense', authenticator, expense)
 router.use('/', authenticator, home)
 
 module.exports = router
