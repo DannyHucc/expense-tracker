@@ -6,14 +6,20 @@
         <form action="/users/login" method="POST">
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
-                <input type="email" name="email" id="email" class="form-control" aria-describedby="email" value="user1@example.com"
-                    placeholder="Enter Email">
+                <input type="email" name="email" id="email" class="form-control" aria-describedby="email"
+                    value="{{ email }}" placeholder="Enter Email">
             </div>
 
             <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
                 <input type="password" name="password" id="password" class="form-control" aria-describedby="password"
-                   value="12345678" placeholder="Enter Password">
+                    placeholder="Enter Password">
+            </div>
+
+            <div class="mb-3">
+                <input type="checkbox" name="rememberMe" id="rememberMe" class="form-check-input me-1" {{#if
+                    rememberMe}} checked {{/if}}>
+                <label for="remember">Remember Me</label>
             </div>
 
             <button type="submit" class="btn btn-success d-block mx-auto mt-3" style="width: 26rem;">Login</button>

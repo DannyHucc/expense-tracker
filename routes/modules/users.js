@@ -11,16 +11,36 @@ const User = require('models-file/user')
 // login
 router.get('/login', async (req, res, next) => {
     try {
-        return res.render('users/login')
+        const { email, rememberMe } = req.session
+        if (rememberMe) {
+            return res.render('users/login', { email, rememberMe })
+        } else {
+            return res.render('users/login')
+        }
     } catch (error) {
         return next(error)
     }
 })
 
-router.post('/login', passport.authenticate('local', {
-    successRedirect: '/',
-    failureRedirect: '/users/login'
-}))
+router.post('/login', async (req, res, next) => {
+    try {
+        const { email, rememberMe } = req.body
+        if (rememberMe === 'on') {
+            req.session.email = email
+            req.session.rememberMe = true
+        } else {
+            req.session.email = null
+            req.session.rememberMe = false
+        }
+        return next()
+    } catch (error) {
+        return next(error)
+    }
+},
+    passport.authenticate('local', {
+        successRedirect: '/',
+        failureRedirect: '/users/login'
+    }))
 
 // register
 router.get('/register', async (req, res, next) => {
