@@ -1,14 +1,15 @@
 {{!-- views/index.hbs --}}
 {{> message}}
+{{!-- show amount --}}
 <div class="mb-3">
-    {{!-- balance data --}}
     <div class="card mx-auto border-0" style="width: 45%; margin-top:5%;">
         <div class="card-body d-flex-column align-items-center border shadow-sm rounded-3 pb-0">
+            {{!-- balance and total amount --}}
             <h2 class="card-title text-center align-middle fw-bold">Your Balance</h2>
             <h3 class="card-text text-center align-middle fw-border text-{{ totalAmountColor }}">
                 ${{ totalAmount }}
             </h3>
-
+            {{!-- income and expense --}}
             <div class="row font-monospace border-top py-2">
                 <div class="col border-end text-center align-middle">
                     <h4>Income</h4>
@@ -24,11 +25,48 @@
     </div>
 </div>
 
+<!-- filter select -->
+<div class="mb-2 d-flex justify-content-center">
+    <form action="/filter" method="get" style="width: 60%;">
+        {{!-- sort --}}
+        <div class="mb-2 d-flex mx-auto border:none">
+            {{!-- sortMethod --}}
+            <label for="sortMethod" class="input-group-text">Sort By</label>
+            <select name="sortMethod" class="form-select" id="sortMethod" onchange="this.form.submit()">
+                <option value="asc" {{#is sortMethod 'asc' }} selected {{/is}}>Ascending order</option>
+                <option value="desc" {{#is sortMethod 'desc' }} selected {{/is}}>Descending order</option>
+            </select>
+            {{!-- sortTitle --}}
+            <select name="sortTitle" class="form-select" id="sortTitle" onchange="this.form.submit()">
+                <option value="date" {{#is sortTitle 'date' }} selected {{/is}}>Date</option>
+                <option value="category" {{#is sortTitle 'category' }} selected {{/is}}>Category</option>
+                <option value="name" {{#is sortTitle 'name' }} selected {{/is}}>Name</option>
+                <option value="amount" {{#is sortTitle 'amount' }} selected {{/is}}>Amount</option>
+            </select>
+        </div>
+        {{!-- category and reset --}}
+        <div class="d-flex mx-auto border:none">
+            {{!-- category --}}
+            <label class="input-group-text" for="sortCategory">Filter</label>
+            <select name="sortCategory" class="form-select" id="sortCategory" onchange="this.form.submit()">
+                <option value="" {{#is sortCategory "" }} selected {{/is}}>All Category</option>
+                {{#each categories}}
+                <option value="{{this._id}}" {{#is this.name ../sortCategory}} selected {{/is}}>
+                    {{this.name}}</option>
+                {{/each}}
+            </select>
+            {{!-- reset --}}
+            <a href="/" id="reset-button" class="btn btn-info" style="width: 50%;">Clear</a>
+        </div>
+    </form>
+</div>
+
 {{!-- expense data --}}
 <div class="mb-3 d-flex justify-content-center">
     <div class="card" style="width:75%;">
         <div class="card-body overflow-auto">
             <table class="table table-hover">
+                {{!-- table head --}}
                 <thead class="table-dark">
                     <tr>
                         <th class="text-center align-middle" scope="col">Type</th>
@@ -40,20 +78,23 @@
                         <th class="text-center align-middle" scope="col">Delete</th>
                     </tr>
                 </thead>
-
+                {{!-- table body --}}
                 <tbody class="record-tables">
                     {{#each records}}
                     <tr>
+                        {{!-- record data --}}
                         <td class="text-center align-middle">{{ this.type }}</td>
                         <td class="text-center align-middle record-icon"><i class="{{ this.icon }}"></i></td>
                         <td class="text-center align-middle">{{ this.name }}</td>
                         <td class="text-center align-middle">{{ this.date }}</td>
                         <td class="text-center align-middle record-amount">{{ this.amount }}</td>
+                        {{!-- edit --}}
                         <td class="text-center align-middle">
                             <a href="/expense/edit/{{ this._id }}" class="edit-icon">
                                 <i class="fa-solid fa-pen-to-square text-success"></i>
                             </a>
                         </td>
+                        {{!-- delete --}}
                         <td class="text-center align-middle">
                             <form class="form-delete form-{{ this._id }}"
                                 action="/expense/delete/{{ this._id }}?_method=DELETE" method="POST">
@@ -65,7 +106,6 @@
                     </tr>
                     {{/each}}
                 </tbody>
-
             </table>
         </div>
     </div>
