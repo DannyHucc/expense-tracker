@@ -8,7 +8,7 @@ const validator = require('validator')
 const bcrypt = require('bcryptjs')
 const User = require('models-file/user')
 
-// login
+// login get
 router.get('/login', async (req, res, next) => {
     try {
         const { email, rememberMe } = req.session
@@ -22,6 +22,7 @@ router.get('/login', async (req, res, next) => {
     }
 })
 
+// login post
 router.post('/login', async (req, res, next) => {
     try {
         const { email, rememberMe } = req.body
@@ -42,7 +43,7 @@ router.post('/login', async (req, res, next) => {
         failureRedirect: '/users/login'
     }))
 
-// register
+// register get
 router.get('/register', async (req, res, next) => {
     try {
         return res.render('users/register')
@@ -51,6 +52,7 @@ router.get('/register', async (req, res, next) => {
     }
 })
 
+// register post
 router.post('/register', async (req, res, next) => {
     try {
         const { name, email, password, confirmPassword } = req.body
@@ -92,7 +94,7 @@ router.post('/register', async (req, res, next) => {
     }
 })
 
-// logout
+// logout get
 router.get('/logout', async (req, res, next) => {
     try {
         req.logout()
