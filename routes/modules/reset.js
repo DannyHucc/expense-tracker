@@ -9,6 +9,7 @@ const express = require('express')
 const router = express.Router()
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
+const nodemailer = require('nodemailer')
 const User = require('models-file/user')
 const { jwtVerify } = require('middleware-file/verify')
 const LocalStorage = require('node-localstorage').LocalStorage
@@ -55,8 +56,28 @@ router.post('/passwordReset', async (req, res, next) => {
         user.tokens = await user.tokens.concat({ token })
         await user.save()
 
-        // redirect to router /reset/resetPassword
-        return res.redirect('/reset/resetPassword')
+        // create mail method
+        const LOCAL_URL = process.env.LOCAL_URL
+        const transporter = await nodemailer.createTransport({
+            host: 'smtp.gmail.com',
+            port: 465,
+            secure: true, // for port 465
+            auth: {
+                user: process.env.GOOGLE_SMTP_MAIL,
+                pass: process.env.GOOGLE_SMTP_PASSWORD,
+            }
+        })
+
+        // send email
+        const info = await transporter.sendMail({
+            from: process.env.GOOGLE_SMTP_MAIL,
+            to: email,
+            subject: 'expense-tracker password reset ✔',
+            html: `<a href=${LOCAL_URL}/reset/resetPassword>Please reset password in 30 mins.</a>`,
+        })
+
+        // redirect to router /reset/confirmMail
+        return res.redirect('/reset/confirmMail')
     } catch (error) {
         return next(error)
     }
@@ -119,6 +140,15 @@ router.post('/resetPassword', jwtVerify, async (req, res, next) => {
         // redirect to router /users/login
         req.flash('success_msg', `The password reset success!`)
         return res.redirect('/users/login')
+    } catch (error) {
+        return next(error)
+    }
+})
+
+// reset confirm mail get
+router.get('/confirmMail', async (req, res, next) => {
+    try {
+        return res.render('reset/confirmMail')
     } catch (error) {
         return next(error)
     }
