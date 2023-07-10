@@ -1,5 +1,5 @@
 {{!-- views/users/login.hbs --}}
-<div class="card mx-auto border-0" style="width: 28rem; margin-top:5%">
+<div class="card mx-auto border-0" style="width: 28rem; margin-top:5%;">
     <h1 class="mx-auto">Login</h1>
     {{> message}}
     <div class="card-body">
@@ -7,13 +7,13 @@
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
                 <input type="email" name="email" id="email" class="form-control" aria-describedby="email"
-                    value="{{ email }}" placeholder="Enter Email">
+                    value="{{ email }}" placeholder="Enter Email" required>
             </div>
 
             <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
                 <input type="password" name="password" id="password" class="form-control" aria-describedby="password"
-                    placeholder="Enter Password">
+                    placeholder="Enter Password" required>
             </div>
 
             <div class="mb-3">
@@ -29,6 +29,10 @@
 
         <p class="lead mt-4">
             No Account? <a href="/users/register">Register</a>
+        </p>
+
+        <p class="lead">
+            Forgot password? <a href="/reset/passwordReset">Find password</a>
         </p>
     </div>
 </div>
