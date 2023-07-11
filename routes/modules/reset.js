@@ -119,14 +119,6 @@ router.post('/resetPassword', jwtVerify, async (req, res, next) => {
             })
         }
 
-        // check reset time
-        const resetInterval = Number(new Date() - Number(user.updatedAt))
-        const waitingTime = (10 * 60 * 1000 - resetInterval) / 60000
-        if (waitingTime > 0) {
-            req.flash('warning_msg', `The password reset interval is too short, please try again after ${Math.floor(waitingTime)} minute`)
-            return res.redirect('/reset/resetPassword')
-        }
-
         // reset user password and updateAt
         const salt = await bcrypt.genSaltSync(10)
         const hash = await bcrypt.hashSync(password, salt, null)
