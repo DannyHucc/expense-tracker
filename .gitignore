@@ -68,3 +68,10 @@ node_modules
 
 # scratch
 JWTToken
+
+# fly io
+fly-redis
+.dockerignore
+.env.production
+Dockerfile
+fly.toml
