@@ -20,10 +20,14 @@ const PORT = process.env.PORT || 8080
 require('config-file/mongoose')
 
 // include redis and set redis config
-const redis = require('redis')
+const Redis = require("ioredis")
 const connectRedis = require('connect-redis')
-const redisUrl = process.env.REDIS_TLS_URL || process.env.REDIS_URL
-const redisClient = redis.createClient(redisUrl)
+const redisClient = new Redis({
+    family: "IPv6",
+    host: process.env.REDIS_HOST,
+    password: process.env.REDIS_PASSWORD
+})
+
 const RedisStore = connectRedis(session)
 redisClient.on('error', function (err) {
     console.log(`Could not connect to redis, error message: ${err}`)
