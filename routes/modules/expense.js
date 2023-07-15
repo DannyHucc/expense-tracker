@@ -27,12 +27,6 @@ router.post('/new', async (req, res, next) => {
         const userId = req.user._id
         const { type, name, date, categoryId, amount } = req.body
 
-        let categories = await Category.find().lean()
-        categories = categories.map(async (category) => {
-            category._id = category._id.toString()
-            return category
-        })
-
         await Record.create({
             type,
             name,
