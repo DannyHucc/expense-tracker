@@ -46,7 +46,7 @@ router.get('/', async (req, res, next) => {
             totalAmount,
             totalAmountColor,
             home: 'home',
-            javascript: ['index.js']
+            javascripts: ['index.js']
         })
     } catch (error) {
         return next(error)
@@ -105,7 +105,7 @@ router.get('/filter', async (req, res, next) => {
             sortMethod,
             sortTitle,
             home: 'home',
-            javascript: ['index.js']
+            javascripts: ['index.js']
         })
     } catch (error) {
         return next(error)

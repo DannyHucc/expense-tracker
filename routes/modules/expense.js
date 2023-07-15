@@ -14,7 +14,7 @@ router.get('/new', async (req, res, next) => {
         return res.render('new', {
             today,
             categories,
-            javascript: ['new.js']
+            javascripts: ['new.js']
         })
     } catch (error) {
         return next(error)
@@ -39,8 +39,7 @@ router.post('/new', async (req, res, next) => {
             date,
             categoryId,
             amount,
-            userId,
-            javascript: ['new.js']
+            userId
         })
         req.flash('success_msg', 'Create success!!!')
         return res.redirect('/')
@@ -70,7 +69,7 @@ router.get('/edit/:id', async (req, res, next) => {
             record,
             categories,
             category: category.name,
-            javascript: ['edit.js']
+            javascripts: ['edit.js']
         })
     } catch (error) {
         return next(error)

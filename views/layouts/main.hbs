@@ -32,8 +32,8 @@
         crossorigin="anonymous"></script>
     {{!-- sweet alert --}}
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    {{#if javascript}}
-    {{#each javascript}}
+    {{#if javascripts}}
+    {{#each javascripts}}
     <script src="/javascripts/{{ this }}"></script>
     {{/each}}
     {{/if}}
