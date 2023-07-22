@@ -66,6 +66,10 @@ router.post('/register', async (req, res, next) => {
             errors.push({ message: 'User already exists!' })
         }
 
+        if (!email.trim() || !password || !confirmPassword) {
+            errors.push({ message: 'Please fill in email, password, and confirm password fields.' })
+        }
+
         if (!validator.isEmail(email)) {
             errors.push({ message: 'Email address is invalid.' })
         }
