@@ -4,7 +4,15 @@ A simple expense tracker website built with Node.js and Express
 
 You can go to this link to test, <https://my-expense-tracker.fly.dev/>
 
-Test account: <user1@example.com>, password: 12345678
+Test account:
+
+>- name: user1
+>- email: <user1@example.com>
+>- password: 12345678
+
+>- name: user2
+>- email: <user2@example.com>
+>- password: 12345678
 
 ![overall](/public/images/overall.png)
 ![reset_password](/public/images/reset_password.png)
