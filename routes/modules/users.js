@@ -89,9 +89,12 @@ router.post('/register', async (req, res, next) => {
         // create the user register information
         const salt = bcrypt.genSaltSync(10)
         const hash = bcrypt.hashSync(password, salt, null)
-        const userName = email.slice(0, Number(email.indexOf("@")))
+        const userName = name || email.slice(0, Number(email.indexOf("@")))
+
         await User.create({ name: userName, email, password: hash })
+
         req.flash('success_msg', 'Register successfully! Please login to your account.')
+        
         return res.redirect('/users/login')
     } catch (error) {
         return next(error)
