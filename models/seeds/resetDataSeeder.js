@@ -6,9 +6,10 @@ if (process.env.NODE_ENV !== 'production') {
 }
 // packages and variables
 const db = require("../../config/mongoose")
-const Category = require("../category")
+
 const User = require("../user")
 const Record = require("../record")
+const Category = require("../category")
 
 db.once("open", async () => {
     try {

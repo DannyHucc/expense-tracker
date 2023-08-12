@@ -1,8 +1,9 @@
 'use strict'
 
 const express = require('express')
-const passport = require('passport')
 const router = express.Router()
+
+const passport = require('passport')
 
 router.get('/facebook', passport.authenticate('facebook', {
     scope: ['email', 'public_profile']

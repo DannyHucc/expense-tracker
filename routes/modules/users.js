@@ -3,10 +3,12 @@
 // packages and variables
 const express = require('express')
 const router = express.Router()
+
 const passport = require('passport')
 const validator = require('validator')
 const bcrypt = require('bcryptjs')
-const User = require('models-file/user')
+
+const User = require('../../models/user')
 
 // login get
 router.get('/login', async (req, res, next) => {

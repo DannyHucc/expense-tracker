@@ -11,13 +11,13 @@ const hbshelpers = require('handlebars-helpers')
 const path = require('path')
 const methodOverride = require('method-override')
 const session = require('express-session')
-const usePassport = require('config-file/passport')
+const usePassport = require('./config/passport')
 const flash = require('connect-flash')
-const routes = require('routes-file')
+const routes = require('./routes')
 const app = express()
 const helpers = hbshelpers()
 const PORT = process.env.PORT || 8080
-require('config-file/mongoose')
+require('./config/mongoose')
 
 // include redis and set redis config
 const Redis = require("ioredis")

@@ -3,7 +3,8 @@
 // packages and variables
 const express = require('express')
 const router = express.Router()
-const { authenticator } = require('middleware-file/auth')
+
+const { authenticator } = require('../middleware/auth')
 
 // router
 const home = require('./modules/home')

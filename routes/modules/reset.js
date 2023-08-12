@@ -7,11 +7,14 @@ if (process.env.NODE_ENV !== 'production') {
 // packages and variables
 const express = require('express')
 const router = express.Router()
+
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
 const nodemailer = require('nodemailer')
-const User = require('models-file/user')
-const { jwtVerify } = require('middleware-file/verify')
+
+const User = require('../../models/user')
+const { jwtVerify } = require('../../middleware/verify')
+
 const LocalStorage = require('node-localstorage').LocalStorage
 const localStorage = new LocalStorage('./scratch')
 

@@ -2,8 +2,9 @@
 
 const express = require('express')
 const router = express.Router()
-const Category = require('models-file/category')
-const Record = require('models-file/record')
+
+const Record = require('../../models/record')
+const Category = require('../../models/category')
 
 router.get('/', async (req, res, next) => {
     try {

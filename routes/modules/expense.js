@@ -3,8 +3,9 @@
 // packages and variables
 const express = require('express')
 const router = express.Router()
-const Record = require('models-file/record')
-const Category = require('models-file/category')
+
+const Record = require('../../models/record')
+const Category = require('../../models/category')
 
 // new get
 router.get('/new', async (req, res, next) => {

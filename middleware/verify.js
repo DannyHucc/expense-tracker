@@ -5,7 +5,7 @@ if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config()
 }
 const jwt = require('jsonwebtoken')
-const User = require('models-file/user')
+const User = require('../models/user')
 const LocalStorage = require('node-localstorage').LocalStorage
 const localStorage = new LocalStorage('./scratch')
 

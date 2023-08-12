@@ -6,12 +6,14 @@ if (process.env.NODE_ENV !== 'production') {
 }
 // packages and variables
 const bcrypt = require('bcryptjs')
-const db = require('config-file/mongoose')
-const User = require('models-file/user')
-const Record = require('models-file/record')
-const Category = require('models-file/category')
-const SEED_USERS = require('models-file/json/users.json').users
-const SEED_RECORD = require('models-file/json/records.json').records
+const db = require("../../config/mongoose")
+
+const User = require("../user")
+const Record = require("../record")
+const Category = require("../category")
+
+const SEED_USERS = require('../json/users.json').users
+const SEED_RECORD = require('../json/records.json').records
 
 // create user seeder
 const seedUser = async (user) => {

@@ -5,9 +5,11 @@ if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config()
 }
 // packages and variables
-const db = require('config-file/mongoose')
-const Category = require('models-file/category')
-const SEED_CATEGORIES = require('models-file/json/categories.json').categories
+const db = require('../../config/mongoose')
+
+const Category = require("../category")
+
+const SEED_CATEGORIES = require('../json/categories.json').categories
 
 // create categories seeder
 const seedCategory = async (categories) => {

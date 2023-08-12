@@ -11,7 +11,7 @@ const LocalStrategy = require('passport-local').Strategy
 const FacebookStrategy = require('passport-facebook').Strategy
 const GoogleStrategy = require('passport-google-oauth20').Strategy
 const GithubStrategy = require("passport-github2").Strategy
-const User = require('models-file/user')
+const User = require('../models/user')
 
 // callback function for third party login strategy
 async function thirdPartyOAuth(accessToken, refreshToken, profile, done) {
