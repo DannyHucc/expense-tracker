@@ -2,17 +2,11 @@
 
 A simple expense tracker website built with Node.js and Express
 
-You can go to this link to test, <https://my-expense-tracker.fly.dev/>
+Medium blog introduction: [click me](https://medium.com/@danny_hu/project-expense-tracker-project-introduction-f4c465e188b6)
 
-Test account:
-
->- name: user1
->- email: <user1@example.com>
->- password: 12345678
-
->- name: user2
->- email: <user2@example.com>
->- password: 12345678
+fly.io deployment (use the following account and password to experience): [click me](https://my-expense-tracker.fly.dev/)
+- Email : <root@example.com>
+- Password: 12345678
 
 ![overall](/public/images/overall.png)
 ![reset_password](/public/images/reset_password.png)
@@ -188,6 +182,10 @@ mongodb connected!
 25. Now you can browse the website on <http://localhost:3000>
 
 26. Test account
+
+>- name: root
+>- email: <root@example.com>
+>- password: 12345678
 
 >- name: user1
 >- email: <user1@example.com>
