@@ -4,6 +4,7 @@
 if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config()
 }
+
 // packages and variables
 const express = require('express')
 const exphbs = require('express-handlebars')
@@ -11,7 +12,7 @@ const hbshelpers = require('handlebars-helpers')
 const path = require('path')
 const methodOverride = require('method-override')
 const session = require('express-session')
-const usePassport = require('./config/passport')
+const passport = require('./config/passport')
 const flash = require('connect-flash')
 const routes = require('./routes')
 const app = express()
@@ -60,7 +61,8 @@ app.use(session({
 }))
 
 // middleware: passport initialize
-usePassport(app)
+app.use(passport.initialize())
+app.use(passport.session())
 
 // middleware: flash and set local variable
 app.use(flash())
