@@ -2,8 +2,6 @@
 
 A simple expense tracker website built with Node.js and Express
 
-Medium blog introduction: [click me](https://medium.com/@danny_hu/project-expense-tracker-project-introduction-f4c465e188b6)
-
 fly.io deployment (use the following account and password to experience): [click me](https://my-expense-tracker.fly.dev/)
 - Email : <root@example.com>
 - Password: 12345678
