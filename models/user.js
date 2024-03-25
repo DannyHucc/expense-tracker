@@ -23,6 +23,10 @@ const userSchema = new Schema(
             type: String,
             required: true
         },
+        fb_id: {
+            type: String,
+            required: false
+        },
         tokens: [{
             token: {
                 type: String,

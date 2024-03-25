@@ -14,7 +14,7 @@ const User = require('../../models/user')
 async function thirdPartyOAuth(accessToken, refreshToken, profile, done) {
     try {
         const { name, id } = profile._json
-        let user = await User.findOne({ id })
+        let user = await User.findOne({ fb_id: id })
         if (user) return done(null, user)
 
         const randomPassword = Math.random().toString(36).slice(-8)
@@ -24,6 +24,7 @@ async function thirdPartyOAuth(accessToken, refreshToken, profile, done) {
         user = await User.create({
             name,
             email: id,
+            fb_id: id,
             password: hash
         })
         return done(null, user)
