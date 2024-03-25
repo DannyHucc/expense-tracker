@@ -13,8 +13,8 @@ const User = require('../../models/user')
 // callback function for third party login strategy
 async function thirdPartyOAuth(accessToken, refreshToken, profile, done) {
     try {
-        const { name, email } = profile._json
-        let user = await User.findOne({ email })
+        const { name, id } = profile._json
+        let user = await User.findOne({ id })
         if (user) return done(null, user)
 
         const randomPassword = Math.random().toString(36).slice(-8)
@@ -23,7 +23,7 @@ async function thirdPartyOAuth(accessToken, refreshToken, profile, done) {
 
         user = await User.create({
             name,
-            email,
+            email: id,
             password: hash
         })
         return done(null, user)
